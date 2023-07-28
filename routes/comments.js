@@ -1,9 +1,9 @@
-/* IMPORTS */
+/*------------ IMPORTS ------------*/
 const express = require('express');
 const router = express.Router({ mergeParams: true });
 const commentCtrl = require('../controllers/comments');
 
-/* ROUTES */
+/*------------ ROUTES ------------*/
 // Create
 router.post('/', commentCtrl.create);
 
@@ -19,5 +19,5 @@ router.put('/:commentId', commentCtrl.update);
 // Delete
 router.delete('/:commentId', commentCtrl.delete);
 
-/* EXPORTS */
+/*------------ EXPORTS ------------*/
 module.exports = router;

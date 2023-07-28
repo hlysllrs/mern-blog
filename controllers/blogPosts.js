@@ -1,6 +1,9 @@
+/*------------ IMPORT MODELS ------------*/
 const BlogPost = require('../models/blogPost');
 const Comment = require('../models/comment');
 
+/*------------ BLOG POST CONTROLLERS ------------*/
+// create a blog post
 exports.create = async function (req, res) {
 	try {
 		const blogPost = await BlogPost.create(req.body);
@@ -10,24 +13,29 @@ exports.create = async function (req, res) {
 	}
 };
 
+// blog posts index (show all blog posts)
 exports.index = async function (req, res) {
 	try {
 		const blogPosts = await BlogPost.find({});
-		res.json({ blogPosts });
+		res.json(blogPosts);
 	} catch (error) {
 		res.status(400).json({ message: error.message });
 	}
 };
 
+// show a blog post
 exports.show = async function (req, res) {
 	try {
-		const blogPost = await BlogPost.find({ _id: req.params.blogPostId });
+		const blogPost = await BlogPost.findOne({
+			_id: req.params.blogPostId
+		}).populate({ path: 'comments' });
 		res.json(blogPost);
 	} catch (error) {
 		res.status(400).json({ message: error.message });
 	}
 };
 
+// update a blog post
 exports.update = async function (req, res) {
 	try {
 		const blogPost = await BlogPost.findOneAndUpdate(
@@ -41,6 +49,7 @@ exports.update = async function (req, res) {
 	}
 };
 
+// delete a blog
 exports.delete = async function (req, res) {
 	try {
 		const blogPost = await BlogPost.findOneAndDelete({

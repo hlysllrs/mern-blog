@@ -76,6 +76,41 @@ function About(props) {
 
 /***/ }),
 
+/***/ "./src/pages/Blog.js":
+/*!***************************!*\
+  !*** ./src/pages/Blog.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Blog)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* provided dependency */ var React = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function Blog(props) {
+  const [blogPosts, setBlogPosts] = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
+    _asyncToGenerator(function* () {
+      try {
+        const res = yield fetch('/api/blog');
+        const data = yield res.json();
+        setBlogPosts(data);
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
+  return /*#__PURE__*/React.createElement(React.Fragment, null, blogPosts.length ? /*#__PURE__*/React.createElement(React.Fragment, null, blogPosts.map(blogPost => /*#__PURE__*/React.createElement("div", {
+    key: blogPost.title
+  }, blogPost.body))) : /*#__PURE__*/React.createElement("h1", null, "welcome to my humble blog"));
+}
+
+/***/ }),
+
 /***/ "./src/pages/Contact.js":
 /*!******************************!*\
   !*** ./src/pages/Contact.js ***!
@@ -177,6 +212,8 @@ const AppRouter = () => {
 /* harmony import */ var _pages_About__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../pages/About */ "./src/pages/About.js");
 /* harmony import */ var _pages_Home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../pages/Home */ "./src/pages/Home.js");
 /* harmony import */ var _pages_Contact__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../pages/Contact */ "./src/pages/Contact.js");
+/* harmony import */ var _pages_Blog__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages/Blog */ "./src/pages/Blog.js");
+
 
 
 
@@ -192,6 +229,10 @@ const routes = [{
   Component: _pages_About__WEBPACK_IMPORTED_MODULE_0__["default"],
   key: 'About',
   path: '/about'
+}, {
+  Component: _pages_Blog__WEBPACK_IMPORTED_MODULE_3__["default"],
+  key: 'Blog',
+  path: '/blog'
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
@@ -363,4 +404,4 @@ const routes = [{
 /******/ 	
 /******/ })()
 ;
-//# sourceMappingURL=App.7356faa4a7048c72bddea45e0b22f2f0.js.map
+//# sourceMappingURL=App.f1b8190305fea4b4825ec863c05154a7.js.map

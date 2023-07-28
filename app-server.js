@@ -1,16 +1,17 @@
-/* IMPORTS */
+/*------------ IMPORT EXPRESS AND BLOG ROUTER ------------*/
 const express = require('express');
-const blogPostRoutes = require('./routes/blogPosts');
+const blogPostRouter = require('./routes/blogPosts');
 
-/* CREATE EXPRESS APP */
+/*------------ CREATE EXPRESS APP ------------*/
 const app = express();
 
-/* MIDDLEWARE */
+/*------------ MIDDLEWARE ------------*/
+// express.json
 app.use(express.json());
-if (process.env.NODE_ENV !== 'development') {
-	app.use(express.static('public'));
-}
-app.use('/api/blog', blogPostRoutes);
+// express.static
+app.use(express.static('public'));
+// mount routes at /api/blog
+app.use('/api/blog', blogPostRouter);
 
-/* EXPORTS */
+/*------------ EXPORT APP ------------*/
 module.exports = app;

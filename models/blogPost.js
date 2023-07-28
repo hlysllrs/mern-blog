@@ -1,5 +1,7 @@
+/*------------ IMPORT MODEL AND SCHEMA FROM MONGOOSE ------------*/
 const { model, Schema } = require('mongoose');
 
+/*------------ BLOG POST SCHEMA ------------*/
 const blogPostSchema = new Schema(
 	{
 		title: { type: String, required: true },
@@ -11,6 +13,8 @@ const blogPostSchema = new Schema(
 	}
 );
 
+/*------------ BLOG POST MODEL ------------*/
 const BlogPost = model('BlogPost', blogPostSchema);
 
+/*------------ EXPORT BLOG POST MODEL ------------*/
 module.exports = BlogPost;

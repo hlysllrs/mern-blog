@@ -1,5 +1,8 @@
+/*------------ IMPORT MODELS ------------*/
 const Comment = require('../models/comment');
 
+/*------------ COMMENT CONTROLLERS ------------*/
+// create a comment
 exports.create = async function (req, res) {
 	try {
 		const comment = await Comment.create(req.body);
@@ -9,6 +12,7 @@ exports.create = async function (req, res) {
 	}
 };
 
+// comments index (show all comments)
 exports.index = async function (req, res) {
 	try {
 		const comments = await Comment.find({});
@@ -18,6 +22,7 @@ exports.index = async function (req, res) {
 	}
 };
 
+// show a comment
 exports.show = async function (req, res) {
 	try {
 		const comment = await Comment.find({ _id: req.params.commentId });
@@ -27,6 +32,7 @@ exports.show = async function (req, res) {
 	}
 };
 
+// update a comment
 exports.update = async function (req, res) {
 	try {
 		const comment = await Comment.findOneAndUpdate(
@@ -40,6 +46,7 @@ exports.update = async function (req, res) {
 	}
 };
 
+// delete a comment
 exports.delete = async function (req, res) {
 	try {
 		const comment = await Comment.findOneAndDelete({

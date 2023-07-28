@@ -1,6 +1,7 @@
 import About from '../pages/About';
 import Home from '../pages/Home';
 import Contact from '../pages/Contact';
+import Blog from '../pages/Blog';
 
 const routes = [
 	{
@@ -17,6 +18,11 @@ const routes = [
 		Component: About,
 		key: 'About',
 		path: '/about'
+	},
+	{
+		Component: Blog,
+		key: 'Blog',
+		path: '/blog'
 	}
 ];
 

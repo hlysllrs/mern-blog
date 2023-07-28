@@ -1,12 +1,11 @@
-/* IMPORTS */
+/*------------ IMPORTS ------------*/
 require('dotenv').config();
 const app = require('./app-server');
 const PORT = process.env.PORT || 8000;
 const mongoose = require('mongoose');
-// built in node.js method to manipulate file paths
-const path = require('path');
+const path = require('path'); // built in node.js method to manipulate file paths
 
-/* MONGODB CONNECTION */
+/*------------ MONGODB CONNECTION ------------*/
 const MONGODB_URI = process.env.MONGODB_URI;
 const db = mongoose.connection;
 
@@ -15,7 +14,7 @@ db.on('open', () => {
 	console.log('Mongo is Connected');
 });
 
-/* LISTENER */
+/*------------ LISTENERS ------------*/
 // for react router
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(path.join(__dirname, 'public', 'index.html')));
